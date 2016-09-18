@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- struts核心配置文件，在应用加载时读取，即不能热加载 -->
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- 修改action请求的扩展名,配置有效优先低于struts.properties高于框架 -->
+	<constant name="struts.action.extension" value="html,,action,"/>
+	
+	<!-- 功能相似的action放在同一包下，extends表示是扩展了struts框架内置包 .'/'为默认名称空间,在url中可缺省 -->
+	
+	<package name="myItem" extends="struts-default" namespace="/myItem">
+		<!-- 配置每一个action，name表示请求路径，不用加应用名。class是类的全路径用于框架反射创建类使用。method为需要执行的方法(如果缺省，默认寻找action中的execute方法) -->
+		<action name="single" class="myItemOutAction" method="execute1" >
+			<!--如果确实此为默认值 name="success" type="dispatcher" -->
+			<result name="success" type="dispatcher">
+				/common/myItemsingle.jsp
+			</result>
+		</action>
+		<action name="inner" class="myItemInAction" method="execute2" >
+			<!--如果确实此为默认值 name="success" type="dispatcher" -->
+			<result name="success" type="dispatcher">
+				/common/myIteminner.jsp
+			</result>
+		</action>
+	</package>
+</struts>

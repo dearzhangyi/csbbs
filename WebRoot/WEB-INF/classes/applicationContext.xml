@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"  
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+       xmlns:context="http://www.springframework.org/schema/context"  
+       xmlns:p="http://www.springframework.org/schema/p"  
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+				default-init-method="init" default-destroy-method="destory">
+<!--在构造方法初始化完毕后执行,在容器销毁前执行,统一的名字配置到beans标签中 ,在init中解决数据的初始化操作-->
+	<!-- 这里写bean的配置 -->
+	 
+	
+	<bean id="userDao" class="cn.zhangyi.csbbs.dao.user.UserDaoImpl">
+		<!-- 此处可以配置属性 -->
+	</bean>
+	
+	<bean id="userService" class="cn.zhangyi.csbbs.service.user.UserServiceImpl" >
+		<property name="userDao" ref="userDao"></property>
+		<!-- 此时引用了上文userDao的 -->
+	</bean>
+	
+	<!-- Spring来管理Action,默认情况下scope="singleton"-->
+	<bean  id="registAction" class="cn.zhangyi.csbbs.web.user.RegistAction"  scope="prototype">
+		<!-- action 在创建的时候会把service 通过set方法注入 -->
+		<property name="userService" ref="userService" />
+	</bean>
+	<bean  id="loginAction" class="cn.zhangyi.csbbs.web.user.LoginAction"  scope="prototype">
+		<!-- action 在创建的时候会把service 通过set方法注入 -->
+		<property name="userService" ref="userService" />
+	</bean>
+	<bean  id="activationAction" class="cn.zhangyi.csbbs.web.user.ActivationAction"  scope="prototype">
+		<!-- action 在创建的时候会把service 通过set方法注入 -->
+		<property name="userService" ref="userService" />
+	</bean>
+	
+	
+	<bean id="blogDao" class="cn.zhangyi.csbbs.dao.blog.BlogDaoImpl">
+		<!-- 此处可以配置属性 -->
+	</bean>
+	<bean id="blogService" class="cn.zhangyi.csbbs.service.blog.BlogServiceImpl" >
+		<property name="blogDao" ref="blogDao"></property>
+		<!-- 此时引用了上文userDao的 -->
+	</bean>
+
+
+	<bean  id="blogOutAction" class="cn.zhangyi.csbbs.web.blog.BlogOutAction"  scope="prototype">
+		<!-- action 在创建的时候会把service 通过set方法注入 -->
+		<property name="blogService" ref="blogService" />
+	</bean>
+	<bean  id="blogInAction" class="cn.zhangyi.csbbs.web.blog.BlogInAction"  scope="prototype">
+		<!-- action 在创建的时候会把service 通过set方法注入 -->
+		<property name="blogService" ref="blogService" />
+	</bean>
+	
+	<bean id="myItemDao" class="cn.zhangyi.csbbs.dao.myItem.MyItemDaoImpl">
+		<!-- 此处可以配置属性 -->
+	</bean>
+	<bean id="myItemService" class="cn.zhangyi.csbbs.service.myItem.MyItemServiceImpl" >
+		<property name="myItemDao" ref="myItemDao"></property>
+		<!-- 此时引用了上文userDao的 -->
+	</bean>
+
+
+	<bean  id="myItemOutAction" class="cn.zhangyi.csbbs.web.myItem.MyItemAction"  scope="prototype">
+		<!-- action 在创建的时候会把service 通过set方法注入 -->
+		<property name="myItemService" ref="myItemService" />
+	</bean>
+	<bean  id="myItemInAction" class="cn.zhangyi.csbbs.web.myItem.MyItemAction"  scope="prototype">
+		<!-- action 在创建的时候会把service 通过set方法注入 -->
+		<property name="myItemService" ref="myItemService" />
+	</bean>
+	
+	<!-- 通过spring加载外部配置文件 -->
+	<!--加载外部的资源文件，多个外部文件之间使用逗号隔开-->
+	<context:property-placeholder location="classpath:ssh.properties"/>
+
+</beans>
