@@ -40,7 +40,26 @@ public class UserServiceImpl implements UserService {
 
 	public User login(String username, String userpassword) {
 		try {
-			return userDao.login(username, userpassword);
+			User user=userDao.login(username, userpassword);
+			return user;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public User adminlogin(String username, String userpassword) {
+		try {
+			User admin=userDao.adminlogin(username, userpassword);
+			return admin;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public int userpower(String userid){
+		try {
+			int power=userDao.userpower(userid);
+			return power;
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

@@ -14,4 +14,8 @@ public interface BlogDao {
 
 	public Long scalar() throws SQLException;
 	
+	public User byuserid(String byuserid) throws SQLException;
+
+	public boolean newblog(Blog blog) throws SQLException;
+	
 }

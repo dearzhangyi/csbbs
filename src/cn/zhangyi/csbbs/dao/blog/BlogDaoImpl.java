@@ -18,12 +18,8 @@ public class BlogDaoImpl implements BlogDao {
 	private QueryRunner qr = new TxQueryRunner();
 
 	public List<Blog> load(int page) throws SQLException {
-		String sql = "select * from blog order by starttime desc limit ?,?";
+		String sql = "select * from blog order by starttime  limit ?,?";
 		List<Blog> blogList= qr.query(sql, new BeanListHandler<Blog>(Blog.class),(page-1)*5,5);
-		for(Blog blog: blogList){
-			if(blog.getContent().length()>361)
-		     blog.setContent(blog.getContent().substring(0,360)); 
-		} 
 		return blogList;	
 	}
 
@@ -39,5 +35,18 @@ public class BlogDaoImpl implements BlogDao {
 		return  number.longValue();
 	}
 	
-	
+	public User byuserid (String userid) throws SQLException {
+		String sql = "select * from user where userid=?";
+		return qr.query(sql, new BeanHandler<User>(User.class), userid);
+	}
+
+	public boolean newblog(Blog blog) throws SQLException {
+		String sql = "insert into blog (blogid,userid,starttime,content,topic,tag,introduction) values(?,?,?,?,?,?,?)";
+		Object[] params = { blog.getBlogid(),blog.getUserid(), blog.getStarttime(),
+				blog.getContent(),blog.getTopic(),blog.getTag(),blog.getIntroduction() };
+		if(0<qr.update(sql, params))
+			return true;
+		else
+			return false;
+	}
 }

@@ -29,7 +29,19 @@ public class MyItemServiceImpl implements MyItemService {
 
 	public List<Reply> load(Integer page,String userid) {
 		try {
-			return myItemDao.load(page, userid);
+			List<Reply> replyList= myItemDao.load(page, userid);
+			 for(Reply reply: replyList){
+					String[] time;
+					time=reply.getReplytime().substring(0, 10).split("-");
+					reply.setYear(time[0]);
+					reply.setMonth(time[1]);
+					reply.setDay(time[2]);
+					reply.setUsername(myItemDao.byuserid(reply.getUserid()).getNickname());
+					reply.setByusername(myItemDao.byuserid(reply.getByuserid()).getNickname());
+					if(reply.getReplycontent().length()>150)
+						reply.setReplycontent(reply.getReplycontent().substring(0,150)); 
+				} 
+			 return replyList;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}

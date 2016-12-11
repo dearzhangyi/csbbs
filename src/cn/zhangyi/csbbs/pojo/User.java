@@ -15,11 +15,15 @@ public  class User {
 	public void setUserpassword(String userpassword) {
 		this.userpassword = userpassword;
 	}
-
-	private String username;
+	 private String nickname;
+	 private String username;
      private String email;
      private Integer rank;
+     private String professional;
+     private String industry;
+     private String birthday;
      private String brief;
+     private String address;
      private boolean status;
 
 
@@ -27,6 +31,46 @@ public  class User {
 
     public boolean isStatus() {
 		return status;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public String getProfessional() {
+		return professional;
+	}
+
+	public void setProfessional(String professional) {
+		this.professional = professional;
+	}
+
+	public String getIndustry() {
+		return industry;
+	}
+
+	public void setIndustry(String industry) {
+		this.industry = industry;
+	}
+
+	public String getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
 	public void setStatus(boolean status) {

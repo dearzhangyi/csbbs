@@ -13,6 +13,8 @@ public interface MyItemDao {
 
 	public Long scalar(String userid) throws SQLException;
 
+	public User byuserid(String byuserid) throws SQLException;
+
 
 	
 }

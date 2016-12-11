@@ -24,21 +24,9 @@ public class MyItemDaoImpl implements MyItemDao {
 	public List<Reply> load(Integer page,String userid) throws SQLException {
 			String sql = " select * from reply where userid =? or byuserid =? order by replytime desc limit ?,?";
 			List<Reply> replyList= qr.query(sql, new BeanListHandler<Reply>(Reply.class),userid,userid,(page-1)*5,5);
-			for(Reply reply: replyList){
-				Calendar c = Calendar.getInstance();
-				c.setTime(reply.getReplytime());
-				int year = c.get(Calendar.YEAR);
-				int month = c.get(Calendar.MONTH) + 1;
-				int day = c.get(Calendar.DAY_OF_MONTH);
-				
-				reply.setUsername(name(reply.getUserid()).getUsername());
-				reply.setByusername(name(reply.getByuserid()).getUsername());
-				if(reply.getReplycontent().length()>150)
-					reply.setReplycontent(reply.getReplycontent().substring(0,150)); 
-			} 
 			return replyList;	
 		}
-	public User name(String userid) throws SQLException {
+	public User byuserid(String userid) throws SQLException {
 		String sql = "select * from user where userid=?";
 		return qr.query(sql, new BeanHandler<User>(User.class), userid);
 	}

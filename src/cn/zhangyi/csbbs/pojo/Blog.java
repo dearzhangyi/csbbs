@@ -1,20 +1,66 @@
 package cn.zhangyi.csbbs.pojo;
 
-import java.util.Date;
-
-
-public  class Blog {
+public class Blog {
+	 private String owner;
      private String userid;
      private String blogid;
 	 private String content;
-     private Date starttime;
+	 private String introduction;
+	 private String image;
+     private String starttime;
+     private String year;
+ 	 private String month;
+ 	 private String day;
      private Integer install;
      private String topic;
+     private String tag;
 	public String getUserid() {
 		return userid;
 	}
+	public String getIntroduction() {
+		return introduction;
+	}
+	public void setIntroduction(String introduction) {
+		this.introduction = introduction;
+	}
+	public String getImage() {
+		return image;
+	}
+	public String getTag() {
+		return tag;
+	}
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 	public void setUserid(String userid) {
 		this.userid = userid;
+	}
+	public String getYear() {
+		return year;
+	}
+	public void setYear(String year) {
+		this.year = year;
+	}
+	public String getMonth() {
+		return month;
+	}
+	public String getOwner() {
+		return owner;
+	}
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
+	public void setMonth(String month) {
+		this.month = month;
+	}
+	public String getDay() {
+		return day;
+	}
+	public void setDay(String day) {
+		this.day = day;
 	}
 	public String getBlogid() {
 		return blogid;
@@ -34,10 +80,10 @@ public  class Blog {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getStarttime() {
+	public String getStarttime() {
 		return starttime;
 	}
-	public void setStarttime(Date starttime) {
+	public void setStarttime(String starttime) {
 		this.starttime = starttime;
 	}
 	public Integer getInstall() {

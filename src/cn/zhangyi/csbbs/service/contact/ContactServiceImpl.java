@@ -1,66 +1,49 @@
 package cn.zhangyi.csbbs.service.contact;
 
 import java.io.IOException;
-
-import java.util.List;
-import java.util.Properties;
-
 import java.sql.SQLException;
-import java.text.MessageFormat;
-
-import javax.mail.MessagingException;
-import javax.mail.Session;
-
-import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import cn.itcast.commons.CommonUtils;
-import cn.itcast.mail.Mail;
-import cn.itcast.mail.MailUtils;
-import cn.zhangyi.csbbs.dao.blog.BlogDao;
-import cn.zhangyi.csbbs.dao.user.UserDao;
-import cn.zhangyi.csbbs.pojo.Blog;
-import cn.zhangyi.csbbs.pojo.User;
-import cn.zhangyi.csbbs.service.user.UserService;
+import cn.zhangyi.csbbs.dao.contact.ContactDao;
+import cn.zhangyi.csbbs.pojo.Feedback;
 
-public class ContactServiceImpl implements MyItemService {
+
+
+public class ContactServiceImpl implements ContactService {
+	
 	public ContactServiceImpl() {
 	}
 
-	public BlogDao blogDao;
-
-	public List<Blog> load(int page) {
-		try {
-			return blogDao.load(page);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	public BlogDao getBlogDao() {
-		return blogDao;
-	}
-
-	public void setBlogDao(BlogDao blogDao) {
-		this.blogDao = blogDao;
-	}
+	public ContactDao contactDao;
 	
-	public Long scalar()  {
+
+	public ContactDao getContactDao() {
+		return contactDao;
+	}
+
+
+	public void setContactDao(ContactDao contactDao) {
+		this.contactDao = contactDao;
+	}
+
+
+	public Feedback show(String feedbackid) {
 		try {
-			return blogDao.scalar();
+			return contactDao.show(feedbackid);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-	public Blog show(String blogid) {
+
+	public boolean feedback(Feedback feedback) {
 		try {
-			return blogDao.show(blogid);
+			feedback.setFeedbackid(CommonUtils.uuid());
+			contactDao.feedback(feedback);
+			return true;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-	
-	
 }

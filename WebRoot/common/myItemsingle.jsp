@@ -53,11 +53,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					  <div class="wrapper_top">
 						<div class="grid_1 alpha">
 							<div class="date">
-								<span>${replySingle.replytime.year}</span>${replySingle.replytime.day}
+								<span>${replySingle.day}</span>${replySingle.month}月${replySingle.year}
 							</div>
 						</div>
 					 	<div class="content span_2_of_single">
-					 	
 						   		<h5 class="blog_title"><a href="csbbs/myItem/inner?themeidorblogid=${replySingle.themeidorblogid}"><p>${replySingle.replytime}</p>
 						   		<p><c:if test="${replySingle.userid==sessionScope.userNow.userid}">您:</c:if>  ${replySingle.username} 回复了 <c:if test="${replySingle.byuserid==sessionScope.userNow.userid}">您:</c:if>   ${replySingle.byusername}</p></a></h5>
 								<div class="content">

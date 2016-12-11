@@ -7,5 +7,7 @@
 	<include file="cn/zhangyi/csbbs/web/user/struts_user.xml"/>
 	<include file="cn/zhangyi/csbbs/web/blog/struts_blog.xml"/>
 	<include file="cn/zhangyi/csbbs/web/contact/struts_contact.xml"/>
+	<include file="cn/zhangyi/csbbs/web/admin/struts_admin.xml"/>
 	<include file="cn/zhangyi/csbbs/web/myItem/struts_myItem.xml"/>
+	<include file="cn/zhangyi/csbbs/web/myAccount/struts_myAccount.xml"/>
 </struts>

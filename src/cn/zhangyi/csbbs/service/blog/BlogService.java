@@ -11,4 +11,6 @@ public interface BlogService {
 	public Blog show(String parameter);
 
 	public Long scalar();
+
+	public boolean newblog(Blog blog);
 }

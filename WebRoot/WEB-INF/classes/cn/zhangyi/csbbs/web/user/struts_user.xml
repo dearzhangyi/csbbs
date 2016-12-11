@@ -53,7 +53,7 @@
 				/index.jsp
 			</result>
 			<result name="error" type="dispatcher">
-				/common/login.jsp
+				/common/message.jsp
 			</result>
 		</action>
 		<action name="activation" class="activationAction" method="execute" >

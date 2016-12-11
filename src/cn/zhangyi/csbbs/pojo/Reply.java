@@ -1,6 +1,5 @@
 package cn.zhangyi.csbbs.pojo;
 
-import java.sql.Date;
 
 import javax.print.attribute.standard.DateTimeAtCompleted;
 
@@ -10,7 +9,10 @@ public class Reply {
 	private String userid;
 	private String byuserid;
 	private String themeidorblogid;
-	private Date replytime;
+	private String replytime;
+	private String year;
+	private String month;
+	private String day;
 	private String replyid;
 	private String replycontent;
 	
@@ -28,6 +30,24 @@ public class Reply {
 	}
 	public String getReplycontent() {
 		return replycontent;
+	}
+	public String getYear() {
+		return year;
+	}
+	public void setYear(String year) {
+		this.year = year;
+	}
+	public String getMonth() {
+		return month;
+	}
+	public void setMonth(String month) {
+		this.month = month;
+	}
+	public String getDay() {
+		return day;
+	}
+	public void setDay(String day) {
+		this.day = day;
 	}
 	public void setReplycontent(String replycontent) {
 		this.replycontent = replycontent;
@@ -50,10 +70,10 @@ public class Reply {
 	public void setThemeidorblogid(String themeidorblogid) {
 		this.themeidorblogid = themeidorblogid;
 	}
-	public Date getReplytime() {
+	public String getReplytime() {
 		return replytime;
 	}
-	public void setReplytime(Date replytime) {
+	public void setReplytime(String replytime) {
 		this.replytime = replytime;
 	}
 	public String getReplyid() {

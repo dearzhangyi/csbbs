@@ -26,8 +26,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         		 <ul>
 					<li><a  href="/csbbs">Home</a></li>
 					<li><a  href="/csbbs/bbs/single?page=1">BBS</a></li>
-					<li><a  href="/csbbs/myItem/single?page=1">My Item</a></li>
 					<li><a  href="/csbbs/blog/single?page=1">Blog</a></li>
+					<li><a  href="/csbbs/myItem/single?page=1">My Item</a></li>
+					<li><a  href="/csbbs/myAccount">My Account</a></li>
 					<li><a  href="/csbbs/contact">Contact Us</a></li>
 					<div class="clear"> </div>
 				</ul>
@@ -53,10 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					  <div class="wrapper_top">
 						<div class="grid_1 alpha">
 							<div class="date">
-								<span>
-									22
-								</span>
-								Sep 2014
+									<span>${blogSingle.day}</span>${blogSingle.month}月${blogSingle.year}
 							</div>
 						</div>
 					 	<div class="content span_2_of_single">
@@ -72,18 +70,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						 			<div class="clear"> </div>
 								</div>	
 								<div class="links">
-									<h3 class="comments">By<a href="bloginner.html">&nbsp;Lorem Ipsum</a></h3>
-									<h3 class="comments"><a href="#">126comments</a></h3>
-									<h3 class="tags">Tags: <a href="#">Design</a>,<a href="#">Creative</a>,<a href="#">wordpress theme</a></h3>
-									<h3>Share</h3>
-									<h3>
-										<div class="social_1">
-											<ul>	
-											    <li class="icon1_t"><a href="#"><span> </span></a></li>
-											    <li class="icon2_f"><a href="#"><span> </span></a></li>	 	
-										    </ul>
-										</div>
-									</h3>
+									<h3 class="comments">By<a href="bloginner.html">${blogSingle.owner}</a></h3>
+									<h3 class="comments"><a href="#">126次回复</a></h3>
+									<h3 class="tags">标签（Tags）: <a href="#">Design</a>,<a href="#">Creative</a>,<a href="#">wordpress theme</a></h3>
 									<div class="clear"> </div>
 								</div>
 						</div>
@@ -98,21 +87,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					   <input type="text" value="Search" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
 				    </form>
 			 	</div>
-               <div class="social_2">	
-               	<h4>Follow Us</h4>
-	           <ul>	
-				    <li class="facebook"><a href="#"><span> </span></a></li>
-				    <li class="twitter"><a href="#"><span> </span></a></li>	 	
-					<li class="google"><a href="#"><span> </span></a></li>
-			  </ul>
-		 	  </div>
+               
                <div class="email_box">
-					<form>
-						<div class="email">
-					  		 <input type="text" value="Enter Your e-mail" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Enter Your e-mail';}">
-					  	</div>
+					<form action="">
 					  	 <div class="button">
-						   	 <span><input type="submit" value="Subscribe"></span>
+						   	 <span><input type="submit" value="检索"></span>
+						   	 <span><a href="/csbbs/common/newBlog.jsp">写博客</a></span>
 						</div>
 				    </form>
 			 	</div>

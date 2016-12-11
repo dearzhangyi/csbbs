@@ -34,7 +34,6 @@ public class MyItemAction {
 		page.setTr(myItemService.scalar(userid));
 		page.setUrl("/csbbs/myItem/single");
 		request.setAttribute("page",page );
-		
 		List<Reply> replyList = myItemService.load(pc,userid);
 		request.setAttribute("replyList", replyList);
 		

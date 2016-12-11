@@ -26,6 +26,24 @@
 				/common/login.jsp
 			</result>
 		</action>
+		<action name="myblog" class="newBlogAction" method="execute1" >
+			<!--如果确省此为默认值 name="success" type="dispatcher" -->
+			<result name="success" type="dispatcher">
+				/common/newBlog.jsp
+			</result>
+			<result name="error" type="dispatcher">
+				/common/login.jsp
+			</result>
+		</action>
+		<action name="newblog" class="newBlogAction" method="execute2" >
+			<!--如果确省此为默认值 name="success" type="dispatcher" -->
+			<result name="success" type="dispatcher">
+				/common/newBlog.jsp
+			</result>
+			<result name="error" type="dispatcher">
+				/common/login.jsp
+			</result>
+		</action>
 		<action name="activation" class="activationAction" method="execute" >
 			<!--如果确省此为默认值 name="success" type="dispatcher" -->
 			<result name="message" type="dispatcher">

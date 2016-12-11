@@ -51,6 +51,11 @@
 		<!-- action 在创建的时候会把service 通过set方法注入 -->
 		<property name="blogService" ref="blogService" />
 	</bean>
+	<bean  id="newBlogAction" class="cn.zhangyi.csbbs.web.blog.NewBlogAction"  scope="prototype">
+		<!-- action 在创建的时候会把service 通过set方法注入 -->
+		<property name="blogService" ref="blogService" />
+	</bean>
+	
 	
 	<bean id="myItemDao" class="cn.zhangyi.csbbs.dao.myItem.MyItemDaoImpl">
 		<!-- 此处可以配置属性 -->
@@ -70,6 +75,33 @@
 		<property name="myItemService" ref="myItemService" />
 	</bean>
 	
+	
+	<bean id="myAccountDao" class="cn.zhangyi.csbbs.dao.myAccount.MyAccountDaoImpl">
+		<!-- 此处可以配置属性 -->
+	</bean>
+	<bean id="myAccountService" class="cn.zhangyi.csbbs.service.myAccount.MyAccountServiceImpl" >
+		<property name="myAccountDao" ref="myAccountDao"></property>
+		<!-- 此时引用了上文userDao的 -->
+	</bean>
+	
+	<bean  id="myAccountAction" class="cn.zhangyi.csbbs.web.myAccount.MyAccountAction"  scope="prototype">
+		<!-- action 在创建的时候会把service 通过set方法注入 -->
+		<property name="myAccountService" ref="myAccountService" />
+	</bean>
+	
+		
+	<bean id="contactDao" class="cn.zhangyi.csbbs.dao.contact.ContactDaoImpl">
+		<!-- 此处可以配置属性 -->
+	</bean>
+	<bean id="contactService" class="cn.zhangyi.csbbs.service.contact.ContactServiceImpl" >
+		<property name="contactDao" ref="contactDao"></property>
+		<!-- 此时引用了上文userDao的 -->
+	</bean>
+	
+	<bean  id="contactAction" class="cn.zhangyi.csbbs.web.contact.ContactAction"  scope="prototype">
+		<!-- action 在创建的时候会把service 通过set方法注入 -->
+		<property name="contactService" ref="contactService" />
+	</bean>
 	<!-- 通过spring加载外部配置文件 -->
 	<!--加载外部的资源文件，多个外部文件之间使用逗号隔开-->
 	<context:property-placeholder location="classpath:ssh.properties"/>

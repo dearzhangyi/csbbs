@@ -9,4 +9,6 @@ public interface UserDao {
 	public  boolean isStatus(String username, String userpassword) throws SQLException;
 	public  User login(String username, String userpassword) throws SQLException;
 	public boolean activation(String userid) throws SQLException;
+	public User adminlogin(String username, String userpassword) throws SQLException;
+	public int userpower(String userid) throws SQLException;
 }
